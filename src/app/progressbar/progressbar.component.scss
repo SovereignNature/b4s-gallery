@@ -1,0 +1,16 @@
+h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.progressbar {
+    height: 1.5rem;
+    border-radius: 32px;
+    width: 0;
+    background-color: #AAE6B9;
+    &__container {
+        margin-bottom: 2rem;
+        border-radius: 32px;
+        background: #eee;
+    }
+}
+

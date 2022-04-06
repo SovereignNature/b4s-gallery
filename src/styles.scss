@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('./styles/_reset.scss');
+@import url('./styles/_typography.scss');
+
+body {
+    background: #057453;
+    min-height: 100vh;
+    color: #fff;
+}

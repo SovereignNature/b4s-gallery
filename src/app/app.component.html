@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="nft else noNFT" class="container">
     <div class="info">
     <h1>{{ nft.title }}</h1>
     <img *ngIf="nft.image" [src]="nft.image" alt="NFT">
@@ -28,3 +28,12 @@
         <b4s-progressbar title="Temperature" [progress]="nft.ref1.temp" [breathProgress]="nft.breath.temp" [total]="50"></b4s-progressbar>
     </div>
 </div>
+
+<ng-template #noNFT>
+    <div class="container">
+        <div class="notFound">
+            <h1>Sorry we were unable to find your NFT</h1>
+            <h2>Please contact our support</h2>
+        </div>
+    </div>
+</ng-template>

@@ -15,10 +15,15 @@ export class AppComponent implements OnInit {
   constructor(private openSeaService: OpenseaGalleryService) {}
   
   ngOnInit(): void {
-    this.openSeaService.getCollection(2).subscribe((value: Nft) => {
+    this.openSeaService.getCollection(this.getRandomNFT(3)).subscribe((value: Nft) => {
       this.nft = value;
     });
     
+  }
+
+  // TODO: REMOVE AFTER BACKEND IS IMPLEMENTED
+  getRandomNFT(max: number): number {
+    return Math.floor(Math.random() * max);
   }
   
 }

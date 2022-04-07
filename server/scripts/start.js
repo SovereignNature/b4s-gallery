@@ -26,7 +26,6 @@ app.use(cors());
 
 app.use(express.static(__dirname + 'public'))
 
-app.use('/images', express.static(__dirname + '/images'));
 app.use('/unrevealed', express.static(__dirname + '/unrevealed'));
 
 async function initAPI() {

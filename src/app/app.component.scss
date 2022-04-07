@@ -1,43 +1,115 @@
 .container {
-    padding: 5rem 3rem;
+    padding: 5rem 4rem;
     text-align: center;
-}
 
-h1 {
-    font-size: 5rem;
-}
-
-img {
-    width: 100%;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-}
-
-.btn {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 3rem;
-    line-height: 3.5rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    margin-bottom: 2rem;
-    width: 100%;
-    background: #231F20;
-}
-
-.info {
-    p {
-        font-size: 1.5rem;
-        line-height: 3rem;
-    }
-    .social {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+    .info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+        h1 {
+            font-size: 5rem;
+        }
         
-        svg {
-            fill: #fff;
+        img {
+            width: 100%;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        
+        .btn {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 3rem;
+            line-height: 3.5rem;
+            padding: 1.5rem 1rem;
+            margin-bottom: 2rem;
+            width: 100%;
+            background: #231F20;
+        }
+        p {
+            font-size: 1.5rem;
+            line-height: 3rem;
+        }
+        .social {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+    
+            svg {
+                fill: #fff;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        padding-left: 10rem;
+        padding-right: 10rem;
+        .traits {
+            padding: 4rem 10rem;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) { 
+    .container {
+        padding-top: 0;
+        padding-bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10rem;
+        min-height: 100vh;
+
+        .info {
+            padding: 0;
+            align-items: flex-start;
+            justify-content: start;
+            max-width: 62rem;
+            text-align: left;
+
+            .btn {
+                text-align: center;
+                font-size: 2rem;
+                width: auto;
+            }
+        }
+
+        .traits {
+            padding: 0;
+            text-align: left;
+        }
+        // padding-left: 30rem;
+        // padding-right: 30rem;
+    }
+}
+
+@media screen and (min-width: 1296px) {
+    .container {
+        gap: 20rem;
+
+        .info {
+            h1 {
+                font-size: 8rem;
+            }
+
+            img {
+                padding-top: 5rem;
+                padding-bottom: 5rem;
+            }
+
+            .btn {
+                padding: 2rem 1.5rem;
+                font-size: 3rem;
+            }
+            p {
+                font-size: 2.5rem;
+                line-height: 6rem;
+            }
         }
     }
 }

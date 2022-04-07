@@ -1,5 +1,4 @@
 .item {
-    
     h3 {
         font-size: 2rem;
         margin-bottom: 1rem;
@@ -25,3 +24,12 @@
     }
 }
 
+@media screen and (min-width: 1296px) { 
+    .item {
+        h3 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+        }
+    }
+
+}

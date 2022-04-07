@@ -1,8 +1,8 @@
 <div class="container">
+    <div class="info">
     <h1>{{ nft.title }}</h1>
     <img *ngIf="nft.image" [src]="nft.image" alt="NFT">
     <a class="btn" href="#">Support right to breath initiative</a>
-    <div class="info">
         <p>Token  ID:  {{ nft.rfid }}</p>
         <p>Generated on: {{ nft.date_t }}</p>
         <div class="social">
@@ -17,14 +17,14 @@
                 </svg>
             </a>
         </div>
-        <div class="traits">
-            <b4s-progressbar title="Carbon" [progress]="nft.ref1.CO2" [breathProgress]="nft.breath.CO2" [total]="5000"></b4s-progressbar>
-            <b4s-progressbar title="Equivalent Carbon" [progress]="nft.ref1.eCO2" [breathProgress]="nft.breath.eCO2" [total]="14000"></b4s-progressbar>
-            <b4s-progressbar title="Humidity" [progress]="nft.ref1.hum" [breathProgress]="nft.breath.hum" [total]="100"></b4s-progressbar>
-            <b4s-progressbar title="Ethanol" [progress]="nft.ref1.ethanol" [breathProgress]="nft.breath.ethanol" [total]="20000"></b4s-progressbar>
-            <b4s-progressbar title="Hydrogen" [progress]="nft.ref1.h2" [breathProgress]="nft.breath.h2" [total]="14000"></b4s-progressbar>
-            <b4s-progressbar title="Total Volatile Organic Compounds" [progress]="nft.ref1.tvoc" [breathProgress]="nft.breath.tvoc" [total]="2000"></b4s-progressbar>
-            <b4s-progressbar title="Temperature" [progress]="nft.ref1.temp" [breathProgress]="nft.breath.temp" [total]="50"></b4s-progressbar>
-        </div>
+    </div>
+    <div class="traits">
+        <b4s-progressbar title="Carbon" [progress]="nft.ref1.CO2" [breathProgress]="nft.breath.CO2" [total]="5000"></b4s-progressbar>
+        <b4s-progressbar title="Equivalent Carbon" [progress]="nft.ref1.eCO2" [breathProgress]="nft.breath.eCO2" [total]="14000"></b4s-progressbar>
+        <b4s-progressbar title="Humidity" [progress]="nft.ref1.hum" [breathProgress]="nft.breath.hum" [total]="100"></b4s-progressbar>
+        <b4s-progressbar title="Ethanol" [progress]="nft.ref1.ethanol" [breathProgress]="nft.breath.ethanol" [total]="20000"></b4s-progressbar>
+        <b4s-progressbar title="Hydrogen" [progress]="nft.ref1.h2" [breathProgress]="nft.breath.h2" [total]="14000"></b4s-progressbar>
+        <b4s-progressbar title="Total Volatile Organic Compounds" [progress]="nft.ref1.tvoc" [breathProgress]="nft.breath.tvoc" [total]="2000"></b4s-progressbar>
+        <b4s-progressbar title="Temperature" [progress]="nft.ref1.temp" [breathProgress]="nft.breath.temp" [total]="50"></b4s-progressbar>
     </div>
 </div>

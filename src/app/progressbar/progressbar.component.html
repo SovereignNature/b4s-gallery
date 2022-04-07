@@ -1,4 +1,7 @@
-<h3>{{ title }}</h3>
-<div class="progressbar__container">
-    <div class="progressbar {{color}}" [ngStyle]="{'width': progress + '%'}" ></div>
+<div class="item">
+    <h3>{{ title }}</h3>
+    <div class="container">
+        <div class="breath" [ngStyle]="{'width': calculateProgress(progress) + '%'}" ></div>
+        <div class="progressbar" [ngStyle]="{'width': calculateProgress(breathProgress) + '%'}" ></div>
+    </div>
 </div>

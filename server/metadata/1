@@ -1,0 +1,26 @@
+{
+    "title": "Supportive Bright Oregon",
+    "rfid": "0xb76fd3806d1",
+    "date_t": "2022-30-03T09:20:00",
+    "lat": "42.36224",
+    "lon": "-72.05708",
+    "image": "http://localhost:4200/assets/images/1.jpeg",
+    "ref1": {
+        "CO2": "416",
+        "eCO2": "314",
+        "tvoc": "25",
+        "ethanol": "16649",
+        "h2": "12387",
+        "temp": "19",
+        "hum": "25"
+    },
+    "breath": {
+        "CO2": "3707",
+        "eCO2": "10736",
+        "tvoc": "136",
+        "ethanol": "19342",
+        "h2": "11132",
+        "temp": "37",
+        "hum": "52"
+    }
+}

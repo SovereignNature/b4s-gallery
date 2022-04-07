@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProgressbarComponent implements OnInit {
   @Input() progress!: number;
   @Input() total!: number;
+  @Input() breathProgress!: number;
   @Input() title!: string;
   color!: string;
   
@@ -15,22 +16,26 @@ export class ProgressbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if(!this.progress) {
-      this.progress = 0;
+    
+  }
+
+  calculateProgress(progress: number): number {
+    if(!progress) {
+      progress = 0;
     }
 
     if(this.total === 0) {
-      this.total = this.progress;
+      this.total = progress;
     } else if (!this.total) {
       this.total = 100;
     }
 
-    if(this.progress > this.total) {
-      this.progress = 100;
+    if(progress > this.total) {
+      progress = 100;
       this.total = 100;
     }
 
-    this.progress = (this.progress / this.total) * 100;
+    return progress = (progress / this.total) * 100;
   }
-
+  
 }

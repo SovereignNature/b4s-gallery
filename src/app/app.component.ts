@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OpenseaGalleryService } from './opensea-gallery.service';
+import { Nft } from './interfaces/nft';
+import { OpenseaGalleryService } from './services/opensea-gallery.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,14 @@ import { OpenseaGalleryService } from './opensea-gallery.service';
 export class AppComponent implements OnInit {
   title = 'bfs-gallery';
   data!: any;
+  nft!: Nft
   
   constructor(private openSeaService: OpenseaGalleryService) {}
   
   ngOnInit(): void {
+    this.openSeaService.getCollection(2).subscribe((value: Nft) => {
+      this.nft = value;
+    });
     
   }
   

@@ -35,10 +35,11 @@
             padding: 1.5rem 1rem;
             margin-bottom: 2rem;
             width: 100%;
-            background: #231F20;
+            background: var(--dark-color);
+            transition: background .2s;
             &:hover {
                 cursor: pointer;
-                background: #443d3f;
+                background: var(--dark-color-hover);
             }
         }
         p {
@@ -50,7 +51,12 @@
             padding-bottom: 1rem;
     
             svg {
-                fill: #fff;
+                fill: var(--accent-color);
+                transition: all .3s;
+
+                &:hover {
+                    fill: var(--primary-color);
+                }
             }
         }
     }

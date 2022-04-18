@@ -1,10 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('./styles/_reset.scss');
+@import url('./styles/_variables.scss');
 @import url('./styles/_typography.scss');
 
 body {
-    background: linear-gradient(125deg, #398ebf 30%, #8FBDD7 70%);
     min-height: 100vh;
-    color: #fff;
+    color: var(--font-color);
+    background-color: var(--light-color);
 }
+
+
 

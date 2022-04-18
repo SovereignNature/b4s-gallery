@@ -1,9 +1,9 @@
-<router-outlet>
-<div *ngIf="metadata else noData" class="container">
-    <div class="info">
-    <h1>{{ metadata.description }}</h1>
-    <img *ngIf="metadata.image" [src]="metadata.image" alt="NFT">
-    <a class="btn" href="#">Support right to breath initiative</a>
+<div *ngIf="metadata && breath else unrevealed" class="container">
+    <div *ngIf="metadata" class="info">
+        <h1>{{ metadata.description }}</h1>
+        <b4s-loader *ngIf="!metadata.image"></b4s-loader>
+        <img *ngIf="metadata.image" [src]="metadata.image" alt="NFT">
+        <a class="btn" href="#">Support right to breath initiative</a>
         <p>Token  ID:  {{ breath.data.rfid }}</p>
         <p>Generated on: {{ breath.data.date_t }}</p>
         <div class="social">
@@ -19,7 +19,7 @@
             </a>
         </div>
     </div>
-    <div class="traits">
+    <div *ngIf="breath" class="traits">
         <b4s-progressbar title="Carbon" [progress]="breath.data.ref1.CO2" [breathProgress]="breath.data.breath.CO2" [total]="5000"></b4s-progressbar>
         <b4s-progressbar title="Equivalent Carbon" [progress]="breath.data.ref1.eCO2" [breathProgress]="breath.data.breath.eCO2" [total]="14000"></b4s-progressbar>
         <b4s-progressbar title="Humidity" [progress]="breath.data.ref1.hum" [breathProgress]="breath.data.breath.hum" [total]="100"></b4s-progressbar>
@@ -30,12 +30,11 @@
     </div>
 </div>
 
-<ng-template #noData>
+<ng-template #unrevealed>
     <div class="container">
         <div class="notFound">
-            <h1>Sorry we were unable to find your NFT</h1>
+            <h1>This NFT is unrevealed yet!</h1>
             <h2>Please contact our support</h2>
         </div>
     </div>
 </ng-template>
-</router-outlet>

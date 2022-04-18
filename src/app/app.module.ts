@@ -6,11 +6,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProgressbarComponent } from './components/progressbar/progressbar.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProgressbarComponent
+    ProgressbarComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

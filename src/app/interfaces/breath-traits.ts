@@ -1,4 +1,4 @@
-export interface NftTraits {
+export interface BreathTraits {
     CO2: number,
     eCO2: number,
     tvoc: number,

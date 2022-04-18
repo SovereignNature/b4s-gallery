@@ -1,10 +1,11 @@
-<div *ngIf="nft else noNFT" class="container">
+<router-outlet>
+<div *ngIf="metadata else noData" class="container">
     <div class="info">
-    <h1>{{ nft.title }}</h1>
-    <img *ngIf="nft.image" [src]="nft.image" alt="NFT">
+    <h1>{{ metadata.description }}</h1>
+    <img *ngIf="metadata.image" [src]="metadata.image" alt="NFT">
     <a class="btn" href="#">Support right to breath initiative</a>
-        <p>Token  ID:  {{ nft.rfid }}</p>
-        <p>Generated on: {{ nft.date_t }}</p>
+        <p>Token  ID:  {{ breath.data.rfid }}</p>
+        <p>Generated on: {{ breath.data.date_t }}</p>
         <div class="social">
             <a href="#" target="_blank">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,17 +20,17 @@
         </div>
     </div>
     <div class="traits">
-        <b4s-progressbar title="Carbon" [progress]="nft.ref1.CO2" [breathProgress]="nft.breath.CO2" [total]="5000"></b4s-progressbar>
-        <b4s-progressbar title="Equivalent Carbon" [progress]="nft.ref1.eCO2" [breathProgress]="nft.breath.eCO2" [total]="14000"></b4s-progressbar>
-        <b4s-progressbar title="Humidity" [progress]="nft.ref1.hum" [breathProgress]="nft.breath.hum" [total]="100"></b4s-progressbar>
-        <b4s-progressbar title="Ethanol" [progress]="nft.ref1.ethanol" [breathProgress]="nft.breath.ethanol" [total]="20000"></b4s-progressbar>
-        <b4s-progressbar title="Hydrogen" [progress]="nft.ref1.h2" [breathProgress]="nft.breath.h2" [total]="14000"></b4s-progressbar>
-        <b4s-progressbar title="Total Volatile Organic Compounds" [progress]="nft.ref1.tvoc" [breathProgress]="nft.breath.tvoc" [total]="2000"></b4s-progressbar>
-        <b4s-progressbar title="Temperature" [progress]="nft.ref1.temp" [breathProgress]="nft.breath.temp" [total]="50"></b4s-progressbar>
+        <b4s-progressbar title="Carbon" [progress]="breath.data.ref1.CO2" [breathProgress]="breath.data.breath.CO2" [total]="5000"></b4s-progressbar>
+        <b4s-progressbar title="Equivalent Carbon" [progress]="breath.data.ref1.eCO2" [breathProgress]="breath.data.breath.eCO2" [total]="14000"></b4s-progressbar>
+        <b4s-progressbar title="Humidity" [progress]="breath.data.ref1.hum" [breathProgress]="breath.data.breath.hum" [total]="100"></b4s-progressbar>
+        <b4s-progressbar title="Ethanol" [progress]="breath.data.ref1.ethanol" [breathProgress]="breath.data.breath.ethanol" [total]="20000"></b4s-progressbar>
+        <b4s-progressbar title="Hydrogen" [progress]="breath.data.ref1.h2" [breathProgress]="breath.data.breath.h2" [total]="14000"></b4s-progressbar>
+        <b4s-progressbar title="Total Volatile Organic Compounds" [progress]="breath.data.ref1.tvoc" [breathProgress]="breath.data.breath.tvoc" [total]="2000"></b4s-progressbar>
+        <b4s-progressbar title="Temperature" [progress]="breath.data.ref1.temp" [breathProgress]="breath.data.breath.temp" [total]="50"></b4s-progressbar>
     </div>
 </div>
 
-<ng-template #noNFT>
+<ng-template #noData>
     <div class="container">
         <div class="notFound">
             <h1>Sorry we were unable to find your NFT</h1>
@@ -37,3 +38,4 @@
         </div>
     </div>
 </ng-template>
+</router-outlet>

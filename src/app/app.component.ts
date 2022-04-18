@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { filter } from 'rxjs/operators';
+
 
 import { OpenseaGalleryService } from '@app/services/opensea-gallery.service';
-import { Nft } from '@app/interfaces/nft';
+import { Breath } from '@app/interfaces/breath';
+import { Metadata } from '@app/interfaces/metadata';
 
 @Component({
   selector: 'app-root',
@@ -10,20 +14,30 @@ import { Nft } from '@app/interfaces/nft';
 })
 export class AppComponent implements OnInit {
   title = 'bfs-gallery';
-  data!: any;
-  nft!: Nft;
+  breath!: Breath;
+  metadata!: Metadata;
+  paramsObject!: Params;
+  tid!: string;
+  cid!: string;
 
-  constructor(private openSeaService: OpenseaGalleryService) {}
+  constructor(private route: ActivatedRoute, private openSeaService: OpenseaGalleryService) { }
 
   ngOnInit(): void {
-    this.openSeaService.getCollection(this.getRandomNFT(3)).subscribe((value: Nft) => {
-      this.nft = value;
+    
+
+    this.route.queryParams.subscribe((params: any) => {
+      this.cid = params.cid;
+      this.tid = params.tid;
+
+      if(this.cid !== undefined && this.tid !== undefined) {
+        this.openSeaService.getBreath(this.cid, this.tid).subscribe((value: Breath) => {
+          this.breath = value;
+        });
+
+        this.openSeaService.getMetadata(this.cid, this.tid).subscribe((value: Metadata) => {
+          this.metadata = value;
+        });
+      }
     });
   }
-
-  // TODO: REMOVE AFTER BACKEND IS IMPLEMENTED
-  getRandomNFT(max: number): number {
-    return Math.floor(Math.random() * max);
-  }
-
  }

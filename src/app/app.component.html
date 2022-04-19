@@ -2,7 +2,7 @@
     <div *ngIf="metadata" class="info">
         <h1>{{ metadata.description }}</h1>
         <img [src]="loader ? '../assets/images/loader.svg' : metadata.image" alt="NFT" (error)="handleMissingImage($event)">
-        <a class="btn" href="#">Support right to breath initiative</a>
+        <a class="btn" target="_blank" [href]="'https://testnets.opensea.io/assets/0xd653694558af69d09709768afac9e35c9fb984c8/' + tid">Support right to breath initiative</a>
         <p>Token  ID:  {{ breath.data.rfid }}</p>
         <p>Generated on: {{ breath.data.date_t }}</p>
         <div class="social">

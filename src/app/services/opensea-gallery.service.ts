@@ -14,7 +14,7 @@ export class OpenseaGalleryService {
   constructor(private http: HttpClient) { }
 
   getBreath(collection: string, id: string): Observable<Breath> {    
-    return this.http.get<Breath>(`${environment.apiUrl}${collection}/breath/${id}`);
+    return this.http.get<Breath>(`${environment.apiUrl}${collection}/breath/${id}.json`);
   }
 
   getMetadata(collection: string, id: string): Observable<Metadata> {
@@ -22,7 +22,6 @@ export class OpenseaGalleryService {
   }
 
   getImage(collection: string, id: string): Observable<any> {
-    console.log(`${environment.apiUrl}${collection}/images/${id}.png`);
     const httpOptions: Object = {
       headers: new HttpHeaders({
         'Accept': 'image/png',

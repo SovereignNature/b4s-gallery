@@ -40,6 +40,6 @@ export class AppComponent implements OnInit {
   }
 
   handleMissingImage(event: Event): void {    
-      this.loader = true;
+    event.type === 'error' ?  this.loader = true : this.loader = false;
   }
  }

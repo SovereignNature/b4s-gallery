@@ -14,6 +14,7 @@ import { Metadata } from '@app/interfaces/metadata';
 })
 export class AppComponent implements OnInit {
   title = 'bfs-gallery';
+  openSeaUrl!: string;
   breath!: Breath;
   metadata!: Metadata;
   paramsObject!: Params;
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
     this.route.queryParams.subscribe((params: any) => {
       this.cid = params.cid;
       this.tid = params.tid;
+      this.openSeaUrl = `https://testnets.opensea.io/assets/0xd653694558af69d09709768afac9e35c9fb984c8/${this.tid}/?force_update=true`;
       if(this.cid !== undefined && this.tid !== undefined) {
         this.openSeaService.getBreath(this.cid, this.tid).subscribe((value: Breath) => {
           this.breath = value;

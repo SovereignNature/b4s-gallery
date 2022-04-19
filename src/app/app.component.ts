@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -17,18 +17,16 @@ export class AppComponent implements OnInit {
   breath!: Breath;
   metadata!: Metadata;
   paramsObject!: Params;
+  loader = false;
   tid!: string;
   cid!: string;
 
   constructor(private route: ActivatedRoute, private openSeaService: OpenseaGalleryService) { }
 
   ngOnInit(): void {
-    
-
     this.route.queryParams.subscribe((params: any) => {
       this.cid = params.cid;
       this.tid = params.tid;
-
       if(this.cid !== undefined && this.tid !== undefined) {
         this.openSeaService.getBreath(this.cid, this.tid).subscribe((value: Breath) => {
           this.breath = value;
@@ -39,5 +37,9 @@ export class AppComponent implements OnInit {
         });
       }
     });
+  }
+
+  handleMissingImage(event: Event): void {    
+      this.loader = true;
   }
  }

@@ -1,8 +1,7 @@
-<div *ngIf="metadata && breath else unrevealed" class="container">
+<div *ngIf="metadata else unrevealed" class="container">
     <div *ngIf="metadata" class="info">
         <h1>{{ metadata.description }}</h1>
-        <b4s-loader *ngIf="!metadata.image"></b4s-loader>
-        <img *ngIf="metadata.image" [src]="metadata.image" alt="NFT">
+        <img [src]="loader ? '../assets/images/loader.svg' : metadata.image" alt="NFT" (error)="handleMissingImage($event)">
         <a class="btn" href="#">Support right to breath initiative</a>
         <p>Token  ID:  {{ breath.data.rfid }}</p>
         <p>Generated on: {{ breath.data.date_t }}</p>

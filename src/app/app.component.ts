@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable, retry, share, Subject, switchMap, takeUntil, timer } from 'rxjs';
 
 import { OpenseaGalleryService } from '@app/services/opensea-gallery.service';
 import { Breath } from '@app/interfaces/breath';
 import { Metadata } from '@app/interfaces/metadata';
-import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +12,7 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  private stopPolling = new Subject();
   openSeaUrl!: string;
   breath!: Breath;
   metadata!: Metadata;
@@ -37,9 +38,12 @@ export class AppComponent implements OnInit {
           this.metadata = value;
         });
 
-        this.openSeaService.getImage(this.cid, this.tid).subscribe((value: Blob) => {
-          this.image$ = value ? of(true) : of(false);
-        });
+        this.image$ = timer(1, 3000).pipe(
+          switchMap(() => this.openSeaService.getImage2(this.cid, this.tid)),
+          retry(),
+          share(),
+          takeUntil(this.stopPolling)
+        );
 
       }
     });

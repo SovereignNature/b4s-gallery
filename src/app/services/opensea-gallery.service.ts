@@ -26,7 +26,18 @@ export class OpenseaGalleryService {
       headers: new HttpHeaders({
         'Accept': 'image/png',
       }),
-      responseType: 'blob'
+      responseType: 'blob',
+    };
+    
+    return this.http.get<Observable<Blob>>(`${environment.apiUrl}${collection}/images/${id}.png`, httpOptions);
+  }
+
+  getImage2(collection: string, id: string): Observable<any> {
+    const httpOptions: Object = {
+      headers: new HttpHeaders({
+        'Accept': 'image/png',
+      }),
+      responseType: 'blob',
     };
     
     return this.http.get<Observable<Blob>>(`${environment.apiUrl}${collection}/images/${id}.png`, httpOptions);

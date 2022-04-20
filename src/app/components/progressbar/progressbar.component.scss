@@ -19,7 +19,8 @@
         .progressbar {
             height: .5rem;
             width: 0;
-            background: var(--accent-color);
+            // background: var(--accent-color);
+            background: var(--accent-color-variant);
         }
     }
 }

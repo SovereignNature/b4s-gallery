@@ -2,7 +2,7 @@
     <div *ngIf="metadata" class="info">
         <h1>{{ metadata.description }}</h1>
         <img [src]="!(image$ | async) ? '../assets/images/loader.svg' : metadata.image" alt="NFT Image">
-        <a class="btn" [ngClass]="{'blocked': !(image$ | async)}" [href]="openSeaUrl" target="_blank">Support right to breath initiative</a>
+        <a class="btn" [ngClass]="{'blocked': !(image$ | async)}" [href]="openSeaUrl" target="_blank">Support the Right to Breath Initiative</a>
         <p>Token  ID:  {{ breath.data.rfid }}</p>
         <p>Generated on: {{ breath.data.date_t }}</p>
         <div class="social">

@@ -1,4 +1,5 @@
 <div *ngIf="metadata else unrevealed" class="container">
+    <!-- VERSION ONE -->
     <div *ngIf="metadata" class="info">
         <h1>{{ metadata.description }}</h1>
         <div *ngIf="(image$ | async) else loader">
@@ -6,8 +7,8 @@
         </div>
         <ng-template #loader>
             <div class="loader">
-                <svg width="256" height="320" viewBox="0 0 496 496" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path class="loader__image" d="M2.5 1H387L2.5 473H387L2.5 1Z"/>
+                <svg width="256" height="320" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="loader__image" d="M122 90H378L122 410H378L122 90Z"/>
                 </svg>
                 <p class="loader__text">Please await a little bit meanwhile your unique piece of art is been generated...</p>
             </div>
@@ -37,6 +38,46 @@
         <b4s-progressbar title="Total Volatile Organic Compounds" [progress]="breath.data.ref1.tvoc" [breathProgress]="breath.data.breath.tvoc" [total]="2000"></b4s-progressbar>
         <b4s-progressbar title="Temperature" [progress]="breath.data.ref1.temp" [breathProgress]="breath.data.breath.temp" [total]="50"></b4s-progressbar>
     </div>
+    <!-- VERSION TWO -->
+    <!-- <div *ngIf="(image$ | async) else loading" class="container">
+        <div *ngIf="metadata" class="info">
+            <h1>{{ metadata.description }}</h1>
+            <img [src]="metadata.image" alt="NFT Image">
+            <a class="btn" [ngClass]="{'blocked': !(image$ | async)}" [href]="openSeaUrl" target="_blank">Support the Right to Breathe Initiative</a>
+            <p>Token  ID:  {{ breath.data.rfid }}</p>
+            <p>Generated on: {{ breath.data.date_t }}</p>
+            <div class="social">
+                <a href="#" target="_blank">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24.4492 24.451H20.8933V18.8801C20.8933 17.5518 20.8693 15.8414 19.0435 15.8414C17.1914 15.8414 16.9078 17.2885 16.9078 18.7825V24.4506H13.352V12.9975H16.7656V14.5628H16.8116C17.1533 13.9787 17.6471 13.4981 18.2403 13.1723C18.8334 12.8465 19.5039 12.6878 20.1802 12.7129C23.7844 12.7129 24.4492 15.084 24.4492 18.1683V24.451ZM9.33937 11.4316C8.93116 11.4317 8.5321 11.3107 8.19264 11.084C7.85318 10.8573 7.58858 10.5349 7.4323 10.1578C7.27603 9.78065 7.23509 9.36563 7.31467 8.96522C7.39425 8.56482 7.59078 8.197 7.87939 7.9083C8.16801 7.6196 8.53575 7.42297 8.93611 7.3433C9.33646 7.26362 9.75146 7.30447 10.1286 7.46067C10.5057 7.61688 10.8281 7.88143 11.0549 8.22086C11.2817 8.56029 11.4027 8.95937 11.4027 9.36761C11.4027 9.91494 11.1854 10.4399 10.7984 10.8269C10.4115 11.214 9.88665 11.4315 9.33937 11.4316V11.4316ZM11.1173 24.4506H7.55774V12.9975H11.1178L11.1173 24.4506ZM26.2202 4.00156H5.77058C5.54054 3.99876 5.3122 4.04137 5.09864 4.12695C4.88508 4.21253 4.6905 4.33939 4.52604 4.50028C4.36157 4.66117 4.23045 4.85291 4.14019 5.06455C4.04992 5.27618 4.00228 5.50354 4 5.73361V26.2678C4.00546 26.7323 4.19506 27.1756 4.52713 27.5003C4.85921 27.8251 5.3066 28.0048 5.77104 27.9998H26.2202C26.6859 28.0061 27.135 27.8272 27.4687 27.5024C27.8025 27.1776 27.9936 26.7335 28 26.2678V5.72993C27.9933 5.26452 27.8021 4.82082 27.4683 4.49643C27.1345 4.17204 26.6856 3.99354 26.2202 4.00018"/>
+                    </svg>
+                </a>
+                <a href="#" target="_blank">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 6.16221C19.2041 6.16221 19.5836 6.1744 20.849 6.23213C22.019 6.28553 22.6544 6.48102 23.0773 6.64531C23.6373 6.863 24.0371 7.12308 24.457 7.54297C24.8769 7.96287 25.137 8.36266 25.3546 8.92274C25.519 9.34564 25.7145 9.98103 25.7679 11.151C25.8256 12.4164 25.8378 12.7959 25.8378 16C25.8378 19.2042 25.8256 19.5837 25.7679 20.849C25.7145 22.019 25.519 22.6544 25.3546 23.0773C25.137 23.6374 24.8769 24.0372 24.457 24.4571C24.0371 24.877 23.6373 25.137 23.0773 25.3547C22.6544 25.519 22.019 25.7145 20.849 25.7679C19.5838 25.8256 19.2043 25.8378 16 25.8378C12.7956 25.8378 12.4161 25.8256 11.151 25.7679C9.98098 25.7145 9.34559 25.519 8.92274 25.3547C8.36261 25.137 7.96282 24.877 7.54293 24.4571C7.12303 24.0372 6.86295 23.6374 6.64531 23.0773C6.48097 22.6544 6.28548 22.019 6.23209 20.8491C6.17435 19.5837 6.16216 19.2042 6.16216 16C6.16216 12.7959 6.17435 12.4164 6.23209 11.151C6.28548 9.98103 6.48097 9.34564 6.64531 8.92274C6.86295 8.36266 7.12303 7.96287 7.54293 7.54297C7.96282 7.12308 8.36261 6.863 8.92274 6.64531C9.34559 6.48102 9.98098 6.28553 11.1509 6.23213C12.4163 6.1744 12.7958 6.16221 16 6.16221ZM16 4C12.7409 4 12.3323 4.01381 11.0524 4.07221C9.77511 4.13052 8.90283 4.33334 8.1395 4.63001C7.35039 4.93668 6.68118 5.347 6.01406 6.01411C5.34695 6.68123 4.93663 7.35044 4.62996 8.13954C4.3333 8.90288 4.13047 9.77516 4.07217 11.0525C4.01377 12.3323 4 12.741 4 16C4 19.2591 4.01377 19.6677 4.07217 20.9476C4.13047 22.2249 4.3333 23.0972 4.62996 23.8605C4.93663 24.6496 5.34695 25.3188 6.01406 25.9859C6.68118 26.6531 7.35039 27.0634 8.1395 27.37C8.90283 27.6667 9.77511 27.8695 11.0524 27.9278C12.3323 27.9862 12.7409 28 16 28C19.259 28 19.6677 27.9862 20.9475 27.9278C22.2248 27.8695 23.0971 27.6667 23.8605 27.37C24.6496 27.0634 25.3188 26.6531 25.9859 25.9859C26.653 25.3188 27.0633 24.6496 27.37 23.8605C27.6667 23.0972 27.8695 22.2249 27.9278 20.9476C27.9862 19.6677 28 19.2591 28 16C28 12.741 27.9862 12.3323 27.9278 11.0525C27.8695 9.77516 27.6667 8.90288 27.37 8.13954C27.0633 7.35044 26.653 6.68123 25.9859 6.01411C25.3188 5.347 24.6496 4.93668 23.8605 4.63001C23.0971 4.33334 22.2248 4.13052 20.9475 4.07221C19.6677 4.01381 19.259 4 16 4ZM16 9.83784C12.5967 9.83784 9.83779 12.5968 9.83779 16C9.83779 19.4033 12.5967 22.1622 16 22.1622C19.4032 22.1622 22.1622 19.4033 22.1622 16C22.1622 12.5968 19.4032 9.83784 16 9.83784ZM16 20C13.7909 20 12 18.2091 12 16C12 13.7909 13.7909 12 16 12C18.2091 12 20 13.7909 20 16C20 18.2091 18.2091 20 16 20ZM23.8456 9.59438C23.8456 10.3897 23.2009 11.0344 22.4056 11.0344C21.6103 11.0344 20.9656 10.3897 20.9656 9.59438C20.9656 8.79909 21.6103 8.15441 22.4056 8.15441C23.2009 8.15441 23.8456 8.79909 23.8456 9.59438Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div *ngIf="breath" class="traits">
+            <b4s-progressbar title="Carbon" [progress]="breath.data.ref1.CO2" [breathProgress]="breath.data.breath.CO2" [total]="5000"></b4s-progressbar>
+            <b4s-progressbar title="Equivalent Carbon" [progress]="breath.data.ref1.eCO2" [breathProgress]="breath.data.breath.eCO2" [total]="14000"></b4s-progressbar>
+            <b4s-progressbar title="Humidity" [progress]="breath.data.ref1.hum" [breathProgress]="breath.data.breath.hum" [total]="100"></b4s-progressbar>
+            <b4s-progressbar title="Ethanol" [progress]="breath.data.ref1.ethanol" [breathProgress]="breath.data.breath.ethanol" [total]="20000"></b4s-progressbar>
+            <b4s-progressbar title="Hydrogen" [progress]="breath.data.ref1.h2" [breathProgress]="breath.data.breath.h2" [total]="14000"></b4s-progressbar>
+            <b4s-progressbar title="Total Volatile Organic Compounds" [progress]="breath.data.ref1.tvoc" [breathProgress]="breath.data.breath.tvoc" [total]="2000"></b4s-progressbar>
+            <b4s-progressbar title="Temperature" [progress]="breath.data.ref1.temp" [breathProgress]="breath.data.breath.temp" [total]="50"></b4s-progressbar>
+        </div>
+    </div>
+    <ng-template #loading>
+        <div class="loading">
+            <svg width="256" height="320" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="loading__image" d="M122 90H378L122 410H378L122 90Z"/>
+            </svg>
+            <p class="loading__title">Please await a little bit meanwhile your unique piece of art is been generated...</p>
+            <p class="loading__text">“Breath for Sale” is a NFT project that explores how a single, situated breath registers in a tokenized market enabled by blockchain technology. Utilizing breathing (i.e. CO2, O2, ethanol) and atmospheric data (i.e. temperature, humidity, time, location, air quality in the immediate environment) collected by an in-situ and custom engineered breathing device, a unique visualization is generated for each participant. Participants then choose between “printing” (the image on white paper) or “minting” (the image as an NFT on OpenSea). By “minting,” this particularly engineered form of situated and site-specific data computation is brought into direct interaction with the Ethereum blockchain. All minted breaths are linked to OpenSea, open for purchase, and are updated in real-time to this website.</p>
+        </div>
+    </ng-template> -->
 </div>
 
 <ng-template #unrevealed>

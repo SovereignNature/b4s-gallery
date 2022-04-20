@@ -1,11 +1,4 @@
 .container {
-    // display: flex;
-    // flex-direction: column;
-    // min-height: 100vh;
-    // align-items: center;
-    // justify-content: center;
-    // text-align: center;
-
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -31,6 +24,26 @@
             padding-top: 3rem;
             padding-bottom: 3rem;
         }
+
+            
+        .loader {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+
+            &__image {
+                stroke-width: 2px;
+                stroke-dasharray: 2400;
+                animation: anim 5s alternate-reverse infinite;
+            }
+
+            &__text {
+                font-size: 2rem;
+                line-height: 3rem;
+                letter-spacing: 2px;
+                animation: text 5s alternate-reverse infinite;
+            }
+        }
+
         
         .btn {
             display: block;

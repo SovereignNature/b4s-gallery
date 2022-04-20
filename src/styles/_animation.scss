@@ -1,0 +1,35 @@
+@keyframes anim {
+    0% {
+      stroke: #9100ff;
+      stroke-width: 2px;
+      stroke-dashoffset: -2400;
+    }
+    50% {
+      stroke: #20066e;
+      stroke-width: 1px;
+    }
+    75% {
+      stroke: #e100ff;
+      stroke-width: 2px;
+    }
+    100% {
+       stroke: #ff0099;
+       stroke-width: 1px;
+       stroke-dashoffset: 0;
+    }
+  }
+
+@keyframes text {
+    0% {
+      color: #9100ff;
+    }
+    50% {
+      color: #20066e;
+    }
+    75% {
+      color: #e100ff;
+    }
+    100% {
+       color: #ff0099;
+    }
+  }

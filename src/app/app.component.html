@@ -1,7 +1,17 @@
 <div *ngIf="metadata else unrevealed" class="container">
     <div *ngIf="metadata" class="info">
         <h1>{{ metadata.description }}</h1>
-        <img [src]="!(image$ | async) ? '../assets/images/loader.svg' : metadata.image" alt="NFT Image">
+        <div *ngIf="(image$ | async) else loader">
+            <img [src]="metadata.image" alt="NFT Image">
+        </div>
+        <ng-template #loader>
+            <div class="loader">
+                <svg width="256" height="320" viewBox="0 0 496 496" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="loader__image" d="M2.5 1H387L2.5 473H387L2.5 1Z"/>
+                </svg>
+                <p class="loader__text">Please await a little bit meanwhile your unique piece of art is been generated...</p>
+            </div>
+        </ng-template>
         <a class="btn" [ngClass]="{'blocked': !(image$ | async)}" [href]="openSeaUrl" target="_blank">Support the Right to Breathe Initiative</a>
         <p>Token  ID:  {{ breath.data.rfid }}</p>
         <p>Generated on: {{ breath.data.date_t }}</p>

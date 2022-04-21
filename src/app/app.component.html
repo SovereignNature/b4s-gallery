@@ -1,5 +1,5 @@
 <div *ngIf="metadata else unrevealed" class="container">
-    <!-- VERSION ONE -->
+    <!-- VERSION ONE - LOADER IN THE IMAGE ONLY -->
     <div *ngIf="metadata" class="info">
         <h1>{{ metadata.description }}</h1>
         <div *ngIf="(image$ | async) else loader">
@@ -38,7 +38,7 @@
         <b4s-progressbar title="Total Volatile Organic Compounds" [progress]="breath.data.ref1.tvoc" [breathProgress]="breath.data.breath.tvoc" [total]="2000"></b4s-progressbar>
         <b4s-progressbar title="Temperature" [progress]="breath.data.ref1.temp" [breathProgress]="breath.data.breath.temp" [total]="50"></b4s-progressbar>
     </div>
-    <!-- VERSION TWO -->
+    <!-- VERSION TWO - FULL LOADING SCREEN -->
     <!-- <div *ngIf="(image$ | async) else loading" class="container">
         <div *ngIf="metadata" class="info">
             <h1>{{ metadata.description }}</h1>
@@ -79,6 +79,10 @@
         </div>
     </ng-template> -->
 </div>
+<!-- VERSION THREE - MODAL -->
+<!-- <div *ngIf="!(image$ | async)">
+    <b4s-modal *ngIf="noDisplay" [noDisplay]="noDisplay" (onHidePopup)="onHidePopup()"></b4s-modal>
+</div> -->
 
 <ng-template #unrevealed>
     <div class="container">

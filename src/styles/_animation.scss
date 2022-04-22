@@ -32,4 +32,35 @@
     100% {
        color: #ff0099;
     }
-  }
+}
+
+@keyframes progressbar {
+    0% {
+      background: #9100ff;
+    }
+    15% {
+      background: #20066e;
+    }
+    30% {
+      background: #00ffff;
+    }
+    45% {
+      background: #00ff00;
+    }
+    60% {
+      background: #ffff00;
+    }
+    75% {
+      background: #ff5f1f;
+    }
+    90% {
+      background: #f72119;
+    }
+    95% {
+      background: #e100ff;
+    }
+    100% {
+       background: #ff0099;
+    }
+}
+

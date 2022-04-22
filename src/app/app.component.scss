@@ -8,8 +8,7 @@
     margin: 3rem 5rem;
 
     .loading {
-        margin-top: 5rem;
-        margin-bottom: 5rem;
+        margin: 2rem 16rem;
 
         &__image {
             stroke-width: 2px;
@@ -27,6 +26,7 @@
         }
 
         &__text {
+            margin-top: 1rem;
             font-size: 2rem;
             font-family: 'Roboto';
             line-height: 3.5rem;

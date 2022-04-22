@@ -13,7 +13,6 @@ import { Metadata } from '@app/interfaces/metadata';
 })
 export class AppComponent implements OnInit {
   private stopPolling = new Subject();
-  noDisplay = true;
   openSeaUrl!: string;
   breath!: Breath;
   metadata!: Metadata;
@@ -45,16 +44,7 @@ export class AppComponent implements OnInit {
           share(),
           takeUntil(this.stopPolling)
         );
-
       }
     });
-  }
-
-  openModal() {
-    this.noDisplay = true;
-  }
-
-  onHidePopup() {
-    this.noDisplay = false;
   }
  }

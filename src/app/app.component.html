@@ -1,6 +1,6 @@
 <div *ngIf="metadata else unrevealed" class="container">
     <!-- VERSION ONE - LOADER IN THE IMAGE ONLY -->
-    <div *ngIf="metadata" class="info">
+    <!-- <div *ngIf="metadata" class="info">
         <h1>{{ metadata.description }}</h1>
         <div *ngIf="(image$ | async) else loader">
             <img [src]="metadata.image" alt="NFT Image">
@@ -13,6 +13,7 @@
                 <p class="loader__text">Please await a little bit meanwhile your unique piece of art is been generated...</p>
             </div>
         </ng-template>
+
         <a class="btn" [ngClass]="{'blocked': !(image$ | async)}" [href]="openSeaUrl" target="_blank">Support the Right to Breathe Initiative</a>
         <p>Token  ID:  {{ breath.data.rfid }}</p>
         <p>Generated on: {{ breath.data.date_t }}</p>
@@ -37,13 +38,13 @@
         <b4s-progressbar title="Hydrogen" [progress]="breath.data.ref1.h2" [breathProgress]="breath.data.breath.h2" [total]="14000"></b4s-progressbar>
         <b4s-progressbar title="Total Volatile Organic Compounds" [progress]="breath.data.ref1.tvoc" [breathProgress]="breath.data.breath.tvoc" [total]="2000"></b4s-progressbar>
         <b4s-progressbar title="Temperature" [progress]="breath.data.ref1.temp" [breathProgress]="breath.data.breath.temp" [total]="50"></b4s-progressbar>
-    </div>
+    </div> -->
     <!-- VERSION TWO - FULL LOADING SCREEN -->
-    <!-- <div *ngIf="(image$ | async) else loading" class="container">
+    <div *ngIf="(image$ | async) else loading" class="container">
         <div *ngIf="metadata" class="info">
             <h1>{{ metadata.description }}</h1>
             <img [src]="metadata.image" alt="NFT Image">
-            <a class="btn" [ngClass]="{'blocked': !(image$ | async)}" [href]="openSeaUrl" target="_blank">Support the Right to Breathe Initiative</a>
+            <a class="btn" [href]="openSeaUrl" target="_blank">Support the Right to Breathe Initiative</a>
             <p>Token  ID:  {{ breath.data.rfid }}</p>
             <p>Generated on: {{ breath.data.date_t }}</p>
             <div class="social">
@@ -77,12 +78,8 @@
             <p class="loading__title">Please await a little bit meanwhile your unique piece of art is been generated...</p>
             <p class="loading__text">“Breath for Sale” is a NFT project that explores how a single, situated breath registers in a tokenized market enabled by blockchain technology. Utilizing breathing (i.e. CO2, O2, ethanol) and atmospheric data (i.e. temperature, humidity, time, location, air quality in the immediate environment) collected by an in-situ and custom engineered breathing device, a unique visualization is generated for each participant. Participants then choose between “printing” (the image on white paper) or “minting” (the image as an NFT on OpenSea). By “minting,” this particularly engineered form of situated and site-specific data computation is brought into direct interaction with the Ethereum blockchain. All minted breaths are linked to OpenSea, open for purchase, and are updated in real-time to this website.</p>
         </div>
-    </ng-template> -->
+    </ng-template>
 </div>
-<!-- VERSION THREE - MODAL -->
-<!-- <div *ngIf="!(image$ | async)">
-    <b4s-modal *ngIf="noDisplay" [noDisplay]="noDisplay" (onHidePopup)="onHidePopup()"></b4s-modal>
-</div> -->
 
 <ng-template #unrevealed>
     <div class="container">

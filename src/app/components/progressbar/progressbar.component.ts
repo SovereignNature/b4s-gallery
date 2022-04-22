@@ -1,23 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'b4s-progressbar',
+  selector: 'bfs-progressbar',
   templateUrl: './progressbar.component.html',
   styleUrls: ['./progressbar.component.scss']
 })
-export class ProgressbarComponent implements OnInit {
+export class ProgressbarComponent {
   @Input() progress!: number;
   @Input() total!: number;
   @Input() breathProgress!: number;
   @Input() title!: string;
   color!: string;
-  
-
-  constructor() { }
-
-  ngOnInit(): void {
-    
-  }
 
   calculateProgress(progress: number): number {
     if(!progress) {

@@ -129,11 +129,11 @@
                     margin: 0;
                     font-size: 1.75rem;
                     text-decoration: none;
-                    color: var(--accent-color-variant);
+                    color: var(--accent-color);
                     &:after {
                         display: block;
                         content: '';
-                        border-bottom: solid 2px var(--accent-color-variant);
+                        border-bottom: solid 2px var(--accent-color);
                         transform: scaleX(0);
                         transition: transform 250ms ease-in-out;
                     }
@@ -146,8 +146,7 @@
             }
     
             svg {
-                // fill: var(--accent-color);
-                fill: var(--accent-color-variant);
+                fill: var(--accent-color);
                 transition: all .3s;
 
                 &:hover {

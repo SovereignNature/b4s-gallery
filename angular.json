@@ -15,7 +15,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "b4s",
+      "prefix": "bfs",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

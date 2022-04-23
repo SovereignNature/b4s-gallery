@@ -6,11 +6,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProgressbarComponent } from './components/progressbar/progressbar.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProgressbarComponent
+    ProgressbarComponent,
+    LoadingComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

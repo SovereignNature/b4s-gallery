@@ -14,14 +14,14 @@
             height: .8rem;
             border-bottom-left-radius: 0;
             background: var(--primary-color);
-            animation: progressbar 10s alternate infinite;
+            animation: progressbar 60s alternate infinite;
         }
 
         .progressbar {
             height: .5rem;
             width: 0;
             background: var(--accent-color);
-            animation: progressbar 10s alternate-reverse infinite;
+            animation: progressbar 60s alternate-reverse infinite;
         }
     }
 }

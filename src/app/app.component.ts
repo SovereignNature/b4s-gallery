@@ -29,13 +29,16 @@ export class AppComponent implements OnInit {
       this.openSeaUrl = `https://testnets.opensea.io/assets/0xd653694558af69d09709768afac9e35c9fb984c8/${this.tid}/?force_update=true`;
       
       if(this.cid !== undefined && this.tid !== undefined) {
-
+        
         this.openSeaService.getBreath(this.cid, this.tid).subscribe((value: Breath) => {
           this.breath = value;
+          console.log(this.breath);
         });
         
         this.openSeaService.getMetadata(this.cid, this.tid).subscribe((value: Metadata) => {
           this.metadata = value;
+          console.log(this.metadata);
+          
         });
 
         this.image$ = timer(1, 3000).pipe(
@@ -46,5 +49,13 @@ export class AppComponent implements OnInit {
         );
       }
     });
+  }
+
+  isTokenLessThanZero(id: string): boolean {
+    return +id < 0;
+  }
+
+  quoteIncludesAuthor(text: string): boolean {
+    return text.includes('–');
   }
  }

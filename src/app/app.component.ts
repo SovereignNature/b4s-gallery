@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   image$!: Observable<boolean>;
   tid!: string;
   cid!: string;
+  error = false;
 
   constructor(private route: ActivatedRoute, private openSeaService: OpenseaGalleryService) { }
 
@@ -26,32 +27,40 @@ export class AppComponent implements OnInit {
     this.route.queryParams.subscribe((params: any) => {
       this.cid = params.cid;
       this.tid = params.tid;
+      
       this.openSeaUrl = `https://testnets.opensea.io/assets/0xd653694558af69d09709768afac9e35c9fb984c8/${this.tid}/?force_update=true`;
       
       if(this.cid !== undefined && this.tid !== undefined) {
-        
-        this.openSeaService.getBreath(this.cid, this.tid).subscribe((value: Breath) => {
-          this.breath = value;
-          console.log(this.breath);
-        });
-        
-        this.openSeaService.getMetadata(this.cid, this.tid).subscribe((value: Metadata) => {
-          this.metadata = value;
-          console.log(this.metadata);
-          
-        });
+        if(this.isTokenLessThanZero(this.tid)) {
+          this.error =  true;
 
-        this.image$ = timer(1, 3000).pipe(
-          switchMap(() => this.openSeaService.getImage2(this.cid, this.tid)),
-          retry(),
-          share(),
-          takeUntil(this.stopPolling)
-        );
+        } else {
+          this.error = false;
+          this.openSeaService.getBreath(this.cid, this.tid).subscribe((value: Breath) => {
+            this.breath = value;
+            console.log(this.breath);
+          });
+          
+          this.openSeaService.getMetadata(this.cid, this.tid).subscribe((value: Metadata) => {
+            this.metadata = value;
+            console.log(this.metadata);
+            
+          });
+  
+          this.image$ = timer(1, 3000).pipe(
+            switchMap(() => this.openSeaService.getImage2(this.cid, this.tid)),
+            retry(),
+            share(),
+            takeUntil(this.stopPolling)
+          );
+        }
       }
     });
   }
 
   isTokenLessThanZero(id: string): boolean {
+    console.log(id);
+    
     return +id < 0;
   }
 

@@ -38,13 +38,10 @@ export class AppComponent implements OnInit {
           this.error = false;
           this.openSeaService.getBreath(this.cid, this.tid).subscribe((value: Breath) => {
             this.breath = value;
-            console.log(this.breath);
           });
           
           this.openSeaService.getMetadata(this.cid, this.tid).subscribe((value: Metadata) => {
             this.metadata = value;
-            console.log(this.metadata);
-            
           });
   
           this.image$ = timer(1, 3000).pipe(
@@ -59,8 +56,6 @@ export class AppComponent implements OnInit {
   }
 
   isTokenLessThanZero(id: string): boolean {
-    console.log(id);
-    
     return +id < 0;
   }
 

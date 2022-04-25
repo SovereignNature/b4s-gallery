@@ -1,0 +1,25 @@
+.error {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 6rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    h1 {
+        font-size: 5rem;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    svg {
+        padding: 2rem;
+        fill: var(--font-color);
+    }
+
+}

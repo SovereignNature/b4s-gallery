@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, retry, share, Subject, switchMap, takeUntil, timer } from 'rxjs';
 
@@ -11,12 +11,12 @@ import { Metadata } from '@app/interfaces/metadata';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   private stopPolling = new Subject();
-  openSeaUrl!: string;
-  breath!: Breath;
-  metadata!: Metadata;
+  breath$!: Observable<Breath>;
+  metadata$!: Observable<Metadata>;
   image$!: Observable<boolean>;
+  openSeaUrl!: string;
   tid!: string;
   cid!: string;
   error = false;
@@ -35,17 +35,22 @@ export class AppComponent implements OnInit {
           this.error =  true;
 
         } else {
-          this.error = false;
-          this.openSeaService.getBreath(this.cid, this.tid).subscribe((value: Breath) => {
-            this.breath = value;
-          });
+          this.breath$ = timer(1,3000).pipe(
+            switchMap(() => this.openSeaService.getBreath(this.cid, this.tid)),
+            retry(),
+            share(),
+            takeUntil(this.stopPolling)
+          );
           
-          this.openSeaService.getMetadata(this.cid, this.tid).subscribe((value: Metadata) => {
-            this.metadata = value;
-          });
-  
-          this.image$ = timer(1, 3000).pipe(
-            switchMap(() => this.openSeaService.getImage2(this.cid, this.tid)),
+          this.metadata$ = timer(1, 3000).pipe(
+            switchMap(() => this.openSeaService.getMetadata(this.cid, this.tid)),
+            retry(),
+            share(),
+            takeUntil(this.stopPolling)
+          );
+
+          this.image$ = timer(1, 1000).pipe(
+            switchMap(() => this.openSeaService.getImage(this.cid, this.tid)),
             retry(),
             share(),
             takeUntil(this.stopPolling)
@@ -53,6 +58,10 @@ export class AppComponent implements OnInit {
         }
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.stopPolling.next(void 0);
   }
 
   isTokenLessThanZero(id: string): boolean {

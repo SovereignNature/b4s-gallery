@@ -1,11 +1,13 @@
-<div *ngIf="metadata else exception" class="container">
+<div *ngIf="(metadata$| async) as metadata else exception" class="container">
     <div *ngIf="(image$ | async) else loading"  class="container">
         <div *ngIf="metadata" class="info">
             <h1>{{ metadata.description }}</h1>
             <img [src]="metadata.image" alt="NFT Image">
             <a class="btn" [href]="openSeaUrl" target="_blank">Contribute to the Right to Breathe Initiative</a>
-            <p>Token  ID:  {{ breath.data.rfid }}</p>
-            <p>Generated on: {{ breath.data.date_t }}</p>
+            <div *ngIf="breath$ | async as breath">
+                <p>Token  ID:  {{ breath.data.rfid }}</p>
+                <p>Generated on: {{ breath.data.date_t }}</p>
+            </div>
             <hr>
             <div class="social">
                 <div class="social__block">
@@ -43,7 +45,7 @@
             </div>
         </div>
         <div class="traits">
-            <div *ngIf="breath">
+            <div *ngIf="breath$ | async as breath">
                 <bfs-progressbar title="Carbon" [progress]="breath.data.ref1.CO2" [breathProgress]="breath.data.breath.CO2" [total]="5000"></bfs-progressbar>
                 <bfs-progressbar title="Equivalent Carbon" [progress]="breath.data.ref1.eCO2" [breathProgress]="breath.data.breath.eCO2" [total]="14000"></bfs-progressbar>
                 <bfs-progressbar title="Humidity" [progress]="breath.data.ref1.hum" [breathProgress]="breath.data.breath.hum" [total]="100"></bfs-progressbar>

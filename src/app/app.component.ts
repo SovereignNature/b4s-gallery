@@ -61,7 +61,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.stopPolling.next(void 0);
+    this.stopPolling.next(true);
   }
 
   isTokenLessThanZero(id: string): boolean {

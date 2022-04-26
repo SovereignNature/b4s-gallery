@@ -49,7 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
             takeUntil(this.stopPolling)
           );
 
-          this.image$ = timer(1, 1000).pipe(
+          this.image$ = timer(1, 3000).pipe(
             switchMap(() => this.openSeaService.getImage(this.cid, this.tid)),
             retry(),
             share(),

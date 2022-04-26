@@ -64,8 +64,5 @@
     </ng-template>
 </div>
 <ng-template #exception>
-    <bfs-error *ngIf="error else unrevealed"></bfs-error>
-    <ng-template #unrevealed>
-        <bfs-not-found></bfs-not-found>
-    </ng-template>
+    <bfs-error [error]="error"></bfs-error>
 </ng-template>

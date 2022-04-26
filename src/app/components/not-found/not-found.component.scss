@@ -17,4 +17,27 @@
         font-size: 3rem;
     }
 
+    h1, h2 {
+        animation: glitch 1.5s linear infinite;
+        &:before,
+        &:after{
+          content: attr(title);
+          position: absolute;
+          left: 0;
+          right: 0;
+        }
+
+        &:before{
+            animation: glitchTop 1.5s linear infinite;
+            clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+        }
+    
+        &:after{
+            animation: glitchBottom 2s linear infinite;
+            clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+            -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+        }
+    }
+
 }

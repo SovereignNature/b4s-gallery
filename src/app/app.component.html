@@ -4,10 +4,8 @@
             <h1>{{ metadata.description }}</h1>
             <img [src]="metadata.image" alt="NFT Image">
             <a class="btn" [href]="openSeaUrl" target="_blank">Contribute to the Right to Breathe Initiative</a>
-            <div *ngIf="breath$ | async as breath">
-                <p>Token  ID:  {{ breath.data.rfid }}</p>
-                <p>Generated on: {{ breath.data.date_t }}</p>
-            </div>
+            <p>Token  ID:  {{ breath.data.rfid }}</p>
+            <p>Generated on: {{ breath.data.date_t }}</p>
             <hr>
             <div class="social">
                 <div class="social__block">

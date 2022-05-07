@@ -28,7 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.cid = params.cid;
       this.tid = params.tid;
       
-      this.openSeaUrl = `https://testnets.opensea.io/assets/0xd653694558af69d09709768afac9e35c9fb984c8/${this.tid}/?force_update=true`;
+      this.openSeaUrl = `https://opensea.io/assets/0x98a1ffdb36079ca1c243276676fda5bb49277d26/${this.tid}/?force_update=true`;
       
       if(this.cid !== undefined && this.tid !== undefined) {
         if(this.isTokenLessThanZero(this.tid)) {
